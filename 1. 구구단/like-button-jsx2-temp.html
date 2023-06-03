@@ -1,0 +1,51 @@
+<html>
+<head>
+</head>
+<body>
+
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- babel 라이브러리 추가 -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- babel 타입으로 스크립트 태그 생성 -->
+  <script type="text/babel" >
+    'use strict';
+
+    const e = React.createElement;
+
+    // LikeButton 컴포넌트
+    class LikeButton extends React.Component {
+
+        // 데이터부분
+        state = { like : false };
+
+        onClickButton = () => {
+            this.setState({like : true});
+        }
+
+        // 화면부분
+        render() {
+            
+            if(this.state.like) {
+                return "You liked this";
+            }
+            
+            return (
+                <button onClick={this.onClickButton}>
+                    Like
+                </button>
+            );
+
+        }
+
+    }
+
+  </script>
+  <script type="text/babel">
+    ReactDOM.createRoot(document.querySelector('#root')).render(<LikeButton/>);
+  </script>
+</body>
+</html>

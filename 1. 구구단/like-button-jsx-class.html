@@ -1,0 +1,71 @@
+<html>
+<head>
+</head>
+<body>
+
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- babel 라이브러리 추가 -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- babel 타입으로 스크립트 태그 생성 -->
+  <script type="text/babel" >
+    'use strict';
+
+    const e = React.createElement;
+
+    class LikeButton extends React.Component {  // Component : 데이터와 화면을 하나로 묶은거
+      
+      // 데이터 부분
+      constructor(props) {
+        super(props);
+        this.state = {liked: false};  // 화면의 바뀔 부분은 state로 만든다.
+      }
+
+      // 화면 부분
+      render() {
+        // 화면에 나올 모든 부분은 return에 넣음
+
+        if (this.state.liked) {          // 화면의 바뀔 부분은 state로 만든다.
+          return 'You liked this.';
+        }
+
+        const array = []; // 배열도 객체입니다.
+        /*
+          A. pop, push, shift, unshift, splice : 배열을 직접적으로 수정
+          B. concat, slice : 새로운 배열을 만들어냄
+          리엑트에서는 A는 쓰면 안됨(객체 직접적으로 수정 금지)
+        */
+
+        //return e('button', {onClick: () => this.setState({liked: true})}, 'Like');  // 데이터가 바뀌면 화면이 자동으로 바뀐다.
+        // JSX 문법 => html 처럼 코드 작성해서 가독성이 더 좋음 (바벨 라이브러리 안쓰면 브라우져에서 돌아가진 않음)
+        // return 에는 태그가 하나만 와야함(태그가 여러개면 최상위 부모 태그 안에 넣어야 함)
+        return (
+          // Button 처럼 대문자 넣으면 안됨, 리엑트는 소문자로
+          // 자바스크립트 코드는 {...}로 감싸줌
+          // JSX내에서는 for, if 못써서 삼항연산자 많이 씀
+          <button onClick={ () => {
+              // this.state.liked = true;       // 리엑트에서는 객체를 직접적으로 수정하면 안된다. [해당 코드 작동 안함]
+              this.setState({liked: true});   // setState를 쓰면 객체를 변경할 수 있다.(화면의 바뀔부분은 데이터부분에서 state로 만들어야한다.)
+            }}>
+            Like
+          </button>
+        );
+
+      }
+    }
+
+  </script>
+  <script type="text/babel">
+    // LikeButton 이라는 컴포넌트를 #root 요소에 그린다.
+    //ReactDOM.createRoot(document.querySelector('#root')).render(e(LikeButton));
+
+    // JSX문법인 경우
+    //ReactDOM.render(<LikeButton />, document.querySelector('#root')); // React 17버전 코드(동작은함)
+    ReactDOM.createRoot(document.querySelector('#root')).render(<LikeButton/>); // React 18버전 코드
+
+  </script>
+</body>
+</html>

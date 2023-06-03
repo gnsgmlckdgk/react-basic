@@ -1,0 +1,44 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- babel 라이브러리 추가 -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- babel 타입으로 스크립트 태그 생성 -->
+  <script type="text/babel">
+    'use strict';
+
+    // 함수형 컴포넌트 X, 함수 컴포넌트 O (class 컴포넌트와 달리 this를 안쓰고 코드가 짧아 더 많이 씀)
+    const LikeButton = () => {
+
+      const [liked, setLiked] = React.useState(false);  // cosnt [aa, bb] : 구조분해 문법
+      /**
+       * const [liked, setLiked] : 구조분해 문법(배열, 객체X)
+       * const liked = result[0];
+       * const setLiked = result[1];
+       */
+
+      // return 한게 화면
+      if (liked) {
+        return 'You liked this.';
+      }
+      return (
+        <button onClick={() => { setLiked(true); }}>Like</button>
+      );
+    }
+
+  </script>
+  <script type="text/babel">
+    ReactDOM.createRoot(document.querySelector('#root')).render(<LikeButton />); // React 18버전 코드
+  </script>
+</body>
+
+</html>

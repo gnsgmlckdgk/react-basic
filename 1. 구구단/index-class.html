@@ -1,80 +1,83 @@
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <title>구구단</title>
     <!-- 리엑트 라이브러리 추가 -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
     <!-- babel 라이브러리 추가 -->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="root"></div>
 
     <script type="text/babel">
-
-        class Gugudan extends React.Component {
-            constructor(props) {
-                super(props);
-                this.state = {
-                    first: Math.ceil(Math.random() * 9),
-                    second: Math.ceil(Math.random() * 9),
-                    value: '',
-                    result: ''
-                };
-            }
-
-            onSubmit = (e) => {
-                e.preventDefault();
-
-                const resultVal = (this.state.first * this.state.second);
-
-                if (parseInt(this.state.value) === resultVal) {
-
-                    const resultMsg = `${this.state.first} x ${this.state.second} = ${resultVal} , 정답`;
-
-                    this.setState({
-                        result: resultMsg,
-                        first: Math.ceil(Math.random() * 9),
-                        second: Math.ceil(Math.random() * 9),
-                        value: ""
-                    });
-                } else {
-                    this.setState({
-                        result: "땡",
-                        value: ""
-                    });
-                }
-            }
-
-            onChange = (e) => this.setState({
-                value: e.target.value
-            })
-
-            render() {
-                return (
-                    <div>
-                        <div>{this.state.first} 곱하기 {this.state.second} 는?</div>
-                        <form onSubmit={this.onSubmit}>
-                            <input type='number' onChange={this.onChange} value={this.state.value} />
-                            <button>입력!</button>
-                            <div>{this.state.result}</div>
-                        </form>
-                    </div>
-                );
-            }
+      class Gugudan extends React.Component {
+        
+        constructor(props) {
+          super(props);
+          this.state = {
+            first: Math.ceil(Math.random() * 9),
+            second: Math.ceil(Math.random() * 9),
+            value: "",
+            result: "",
+          };
         }
 
+        onSubmit = (e) => {
+          e.preventDefault();
 
+          const resultVal = this.state.first * this.state.second;
+
+          if (parseInt(this.state.value) === resultVal) {
+            const resultMsg = `${this.state.first} x ${this.state.second} = ${resultVal} , 정답`;
+
+            this.setState({
+              result: resultMsg,
+              first: Math.ceil(Math.random() * 9),
+              second: Math.ceil(Math.random() * 9),
+              value: "",
+            });
+          } else {
+            this.setState({
+              result: "땡",
+              value: "",
+            });
+          }
+        };
+
+        onChange = (e) =>
+          this.setState({
+            value: e.target.value,
+          });
+
+        render() {
+          return (
+            <React.Fragment>
+              <div>
+                {this.state.first} 곱하기 {this.state.second} 는?
+              </div>
+              <form onSubmit={this.onSubmit}>
+                <input type="number" onChange={this.onChange} value={this.state.value} />
+                <button type="submit">입력!</button>
+                <div>{this.state.result}</div>
+              </form>
+            </React.Fragment>
+          );
+        }
+      }
     </script>
 
     <script type="text/babel">
-        //ReactDOM.render(<Gugudan />, document.querySelector("#root"));
-        ReactDOM.createRoot(document.querySelector('#root')).render(<Gugudan />); // React 18버전 코드
+      //ReactDOM.render(<Gugudan />, document.querySelector("#root"));
+      ReactDOM.createRoot(document.querySelector("#root")).render(<Gugudan />); // React 18버전 코드
     </script>
-
-</body>
-
+  </body>
 </html>

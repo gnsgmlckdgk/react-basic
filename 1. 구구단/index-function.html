@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>구구단-함수</title>
+    <!-- 리엑트 라이브러리 추가 -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- babel 라이브러리 추가 -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const Gugudan = () => {
+
+            const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9));
+            const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9));
+            const [value, setValue] = React.useState("");
+            const [result, setResult] = React.useState("");
+
+            const inputRef = React.useRef(null);    // useRef(기본값)
+
+
+            const onSubmitProc = (e) => {
+                e.preventDefault();
+
+                if (parseInt(first * second) === parseInt(value)) {
+                    const rstMsg = `${first} x ${second} = ${value} , 정답!!`;
+                    setResult(rstMsg);
+                    setFirst(Math.ceil(Math.random() * 9));
+                    setSecond(Math.ceil(Math.random() * 9));
+                    setValue("");
+                } else {
+                    const rstMsg = `${first} x ${second} = ${value} , 땡!!`;
+                    setResult(rstMsg);
+                    setValue("");
+                }
+
+                inputRef.current.focus();
+            }
+
+            const onChangeProc = (e) => {
+                setValue(e.target.value);
+            }
+
+            return (
+                < React.Fragment >
+                    <div>{first} 곱하기 {second} 는?</div>
+                    <form onSubmit={onSubmitProc}>
+                        <input ref={inputRef} type="number" onChange={onChangeProc} value={value} />
+                        <button type="submit">입력!</button>
+                    </form>
+                    <div>{result}</div>
+                </React.Fragment >
+            );
+        };
+
+    </script>
+
+    <script type="text/babel">
+        //ReactDOM.render(<Gugudan />, document.querySelector("#root"));
+        ReactDOM.createRoot(document.querySelector("#root")).render(<Gugudan />); // React 18버전 코드
+    </script>
+</body>
+
+</html>

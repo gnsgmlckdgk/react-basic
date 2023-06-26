@@ -48,14 +48,14 @@
             }
 
             return (
-                < React.Fragment >
+                <React.Fragment>
                     <div>{first} 곱하기 {second} 는?</div>
                     <form onSubmit={onSubmitProc}>
                         <input ref={inputRef} type="number" onChange={onChangeProc} value={value} />
                         <button type="submit">입력!</button>
                     </form>
                     <div>{result}</div>
-                </React.Fragment >
+                </React.Fragment>
             );
         };
 

@@ -1,0 +1,9 @@
+리엑트
+npm i react react-dom
+
+웹팩
+npm i -D webpack webpack-cli
+
+바벨
+npm i -D @babel/core @babel/preset-env
+npm i -D @babel/preset-react babel-loader

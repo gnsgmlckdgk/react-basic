@@ -1,5 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/macos,react,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,react,visualstudiocode
+# 2023-07-01
 
 ### macOS ###
 # General
@@ -96,5 +97,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
+ 
 # End of https://www.toptal.com/developers/gitignore/api/windows

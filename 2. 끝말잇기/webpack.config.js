@@ -1,4 +1,4 @@
-const path = require('path');  // NodeJS를 설치하면 path는 설치되어있다.
+const path = require('path');                   // NodeJS를 설치하면 path는 설치되어있다.
 
 module.exports = {
     name: 'word-relay-setting',
@@ -20,11 +20,21 @@ module.exports = {
             test: /\.jsx?/,
             loader: 'babel-loader',
             options: {
-                presets: ['@babel/preset-env', '@babel/preset-react'],
+                presets: [
+                    ['@babel/preset-env', {
+                        targets: {
+                            browsers: ['> 5% in KR', 'last 2 chrome versions'],   // browserslist
+                        },
+                    }],
+                    '@babel/preset-react'
+                ],
+                plugins: [],
             }
         }],
     },
+    plugins: [
 
+    ],
     output: {   // 출력
         path: path.join(__dirname, 'dist'), // __dirname은 현재 파일의 절대경로를 동적으로 가져옴, 현재파일경로/dist
         filename: 'app.js'

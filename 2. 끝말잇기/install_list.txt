@@ -3,7 +3,13 @@ npm i react react-dom
 
 웹팩
 npm i -D webpack webpack-cli
+웹팩 자동 빌드
+npm i react-refresh @pmmmwh/react-refresh-webpack-plugin -D
+웹팩 개발용 서버
+npm i -D webpack-dev-server
 
 바벨
 npm i -D @babel/core @babel/preset-env
 npm i -D @babel/preset-react babel-loader
+
+

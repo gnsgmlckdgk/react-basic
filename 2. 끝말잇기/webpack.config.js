@@ -1,4 +1,5 @@
 const path = require('path');                   // NodeJS를 설치하면 path는 설치되어있다.
+const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
     name: 'word-relay-setting',
@@ -28,15 +29,23 @@ module.exports = {
                     }],
                     '@babel/preset-react'
                 ],
-                plugins: [],
+                plugins: [
+                    'react-refresh/babel'
+                ],
             }
         }],
     },
     plugins: [
-
+        new RefreshWebpackPlugin()
     ],
     output: {   // 출력
         path: path.join(__dirname, 'dist'), // __dirname은 현재 파일의 절대경로를 동적으로 가져옴, 현재파일경로/dist
-        filename: 'app.js'
+        filename: 'app.js',
+        publicPath: '/dist/'
     },
+    devServer: {
+        devMiddleware: { publicPath: '/dist' },
+        static: { directory: path.resolve(__dirname) },
+        hot: true
+    }
 }

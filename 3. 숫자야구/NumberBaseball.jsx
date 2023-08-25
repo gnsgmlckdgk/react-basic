@@ -32,6 +32,7 @@ class NumberBaseball extends Component {
                     <input maxLength={4} value={this.state.value} onChange={this.onChangeInput} />
                 </form>
                 <div>시도 : {this.state.tries.length}</div>
+                map
                 <ul>
                     {['사과', '바나나', '포도', '귤', '감', '배', '밤'].map((v) => {
                         return (
@@ -39,6 +40,41 @@ class NumberBaseball extends Component {
                         );
                     })}
                 </ul>
+
+                map(배열로)
+                <ul>
+                    {[
+                        ['사과', '맛있다'],
+                        ['바나나', '맛없다'],
+                        ['포도', '시다'],
+                        ['귤', '시다'],
+                        ['감', '시다'],
+                        ['배', '시다'],
+                        ['밤', '시다'],
+                    ].map((v) => {
+                        return (
+                            <li><b>{v[0]}</b> = {v[1]}</li>
+                        );
+                    })}
+                </ul>
+
+                map(객체로)
+                <ul>
+                    {[
+                        { fruit: '사과', taste: '맛있다' },
+                        { fruit: '바나나', taste: '맛없다' },
+                        { fruit: '포도', taste: '시다' },
+                        { fruit: '귤', taste: '시다' },
+                        { fruit: '감', taste: '시다' },
+                        { fruit: '배', taste: '시다' },
+                        { fruit: '밤', taste: '시다' },
+                    ].map((v, i) => {
+                        return (
+                            <li key={v.fruit + v.taste}><b>{i + 1}. {v.fruit}</b> = {v.taste}</li>
+                        );
+                    })}
+                </ul>
+
             </>
         );
     }

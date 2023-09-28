@@ -76,15 +76,16 @@ class NumberBaseball extends Component {
     }
 
     render() {
+        const { result, value, tries } = this.state;    // 구조분해문법으로 hooks랑 비슷하게 쓸수도 있음
         return (
             <>
-                <h1>{this.state.result}</h1>
+                <h1>{result}</h1>
                 <form onSubmit={this.onSubmitForm}>
-                    <input maxLength={4} value={this.state.value} onChange={this.onChangeInput} />
+                    <input maxLength={4} value={value} onChange={this.onChangeInput} />
                 </form>
-                <div>시도 : {this.state.tries.length}</div>
+                <div>시도 : {tries.length}</div>
                 <ul>
-                    {this.state.tries.map((v, i) => {
+                    {tries.map((v, i) => {
                         return (
                             <Try key={`${i + 1}차 시도 : `} tryInfo={v} />
                         )

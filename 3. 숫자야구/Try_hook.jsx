@@ -1,13 +1,13 @@
 const React = require('react');
 
-//const Try = (props) => {
-const Try = ({ tryInfo }) => {  // props 오는 자리에 구조분해문법
+const Try = React.memo(({ tryInfo }) => {
     return (
         <li>
             <div>{tryInfo.try}</div>
             <div>{tryInfo.result}</div>
         </li>
     );
-};
+});
+Try.displayName = 'Try';
 
 module.exports = Try;
